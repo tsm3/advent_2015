@@ -37,6 +37,25 @@ impl Santa {
 
 fn main() {
     let inputstr = parse_file_to_string();
+
+    // Part 1
+    let mut my_pt1 = Santa::new();
+    for arrow in inputstr.chars() {
+        match arrow {
+            '>' => my_pt1.x += 1,
+            '<' => my_pt1.x -= 1,
+            '^' => my_pt1.y += 1,
+            'v' => my_pt1.y -= 1,
+            _ => panic!("Eh?")
+        };
+        my_pt1.visit(my_pt1.x, my_pt1.y);
+    }
+
+    // println!("{}", my_pt1);
+    let answer1 = my_pt1.unique_houses();
+    println!("Answer to part 1: {answer1}");
+
+
     let mut my_santa = Santa::new();
     let mut my_robo = Santa::new();
 
@@ -57,10 +76,6 @@ fn main() {
         idx += 1;
     }
 
-    println!("{}", my_santa);
-    let answer1 = my_santa.unique_houses();
-    println!("{answer1}");
-
     let mut newmap = HashMap::new();
     for (key, value) in my_santa.map.into_iter() {
         newmap.insert(key, value);
@@ -74,6 +89,6 @@ fn main() {
         y:0,
         map:newmap
     };
-    println!("{}", placeholder.unique_houses());
+    println!("Answer to part 2: {}", placeholder.unique_houses());
 
 }
