@@ -3,7 +3,7 @@ use std::fs;
 pub fn parse_file_to_string() -> String {
     // let file_path = "resource/input".to_owned();
     let input = fs::read_to_string("resource/input")
-        .expect("Can't parse??");
+        .expect("Can't parse?? No file??");
     // println!("{:?}", input);
     input
 }
